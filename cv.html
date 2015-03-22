@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link type="text/css" rel="stylesheet" href="cv.css" />
+        <title>CV</title>
+    </head>
+    <body>
+        <div class="contact">
+            <h1>袁明艺 （1984年10月）</h1>
+            <h3>电话：<span class="phone">13718389366</span></h3><h3>邮箱：<span class="email">millan.yuan@hotmail.com</span></h3>
+            <div class="clear"></div>
+        </div>
+        <div class="experience">
+            <h2>经历：</h2>
+            <ul>
+                <li><p>2003级北京大学物理学院本科，毕业论文获得优秀（top10%）。2010级清华大学计算机系硕士研究生，期间以第一或第二作者身份在有影响力的国际会议和期刊（EI，SCI）上发表论文3篇。毕业论文获校级优秀论文称号。</p></li>
+                <li><p>2007年-2009年在武汉东湖新技术创业中心担任行业研究员，向高层提供工业园区产业规划的建议</p></li>
+                <li><p>2013年-现在 在微软亚太研发中心商务办公软件部门担任软件工程师，做商务会议系统（Skype for  business）后台IT管理员工具的开发与维护。工作一年晋升一级（目前60）。</p></li>
+            </ul>
+        </div>
+        <div class="projects">
+            <h2>项目：</h2>
+            <ul>
+                <li><p>在研究生期间，独自完成空间遥操作系统的软件设计与开发。该系统包含地面操作站和空间控制器两部分，通过模拟的自定义延时网络进行连接。地面操作站通过外接操作杆（可接多种）由操作员输入指令，对指令进行验证并通过模拟延时网络将指令发送到空间控制器，同时接受由空间控制器回传的指令执行结果（机器人的实际状态），以及多自由度摄像机和kinect拍摄的视频并重建场景三维图像显示给操作员。空间控制器负责对指令进行解码并发送给相应的底层机械臂模块或机械爪。项目涉及多种软硬件，至今已经使用四年，多次被应用于国家863, 972等重点科研项目。</p></li>
+                <li><p>在研究生期间独自开发清华校园网android应用，基于校园网前端外挂，可方便连接校内无线网络。</p></li>
+                <li><p>在微软期间，主要负责一个商务会议系统拓扑结构生成工具的项目（产品代码和测试代码）的新功能开发与维护。在不影响开发进度的条件下，对开发代码和测试代码进行了大规模的重构，将开发代码的拓朴树视图模型类继承减少1层（原先有8层）并共享大量基础代码，实现新的框架使得新增拓扑节点只需要实现一个继承类（原先需要在多处增加代码）；实现视图模型层的自动化测试框架并将之前使用MBT（基于模型的测试）生成的UI测试项目转换成API测试项目，将这部分自动化测试的时间由数十个小时缩短到1个小时以内。</p></li>
+            </ul>
+        </div>
+        <div class="personal">
+            <h2>兴趣方向：</h2>
+            <ul>
+                <li><p>对人工智能，图像识别以及机器视觉技术有少量积累和深厚兴趣。研究生期间做过基于kincet的人体动作视频分析并发表论文</p></li>
+                <li><p>对智能硬件和物联网抱有很大兴趣</p></li>
+            </ul>
+        </div>
+
+        <script type="text/javascript">
+            window.onload = function () {
+                var forEach = Array.prototype.forEach;
+                var phoneEles = document.getElementsByClassName('phone');
+                forEach.apply(phoneEles, [function (ele) {
+                    ele.innerHTML = '<a href="tel:' + ele.textContent + '">' + ele.textContent + '</a>';
+                } ]);
+                var emailEles = document.getElementsByClassName('email');
+                forEach.apply(emailEles, [function (ele) {
+                    ele.innerHTML = '<a href="mailto:' + ele.textContent + '">' + ele.textContent + '</a>';
+                } ]);
+            };
+        </script>
+    </body>
+</html>
