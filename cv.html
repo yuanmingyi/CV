@@ -6,6 +6,7 @@
         <title>CV</title>
     </head>
     <body>
+        <div id="userAgent"></div>
         <div class="contact">
             <h1>袁明艺 （1984年10月）</h1>
             <h3>电话：<span class="phone">13718389366</span></h3><h3>邮箱：<span class="email">millan.yuan@hotmail.com</span></h3>
@@ -46,6 +47,11 @@
                 forEach.apply(emailEles, [function (ele) {
                     ele.innerHTML = '<a href="mailto:' + ele.textContent + '">' + ele.textContent + '</a>';
                 } ]);
+
+                if (window.location.search !== '') {
+                    var userAgent = document.getElementById('userAgent');
+                    userAgent.textContent = navigator.userAgent || navigator.vendor || window.opera;
+                }
             };
         </script>
     </body>
