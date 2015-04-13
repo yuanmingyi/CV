@@ -8,9 +8,15 @@
         <button onclick="shareTimeline()">share to friend circle</button>
         <button onclick="sendToFriend()">send to friend</button>
         <button onclick="addContact()">add contact</button>
+        <div><span id="errMsg"></span></div>
         <script type="text/javascript">
+            function output(msg) {
+                var msgBox = document.getElementById("errMsg");
+                msgBox.textContent = msg;
+            }
             function shareTimeline() {
                 if (typeof WeixinJSBridge === 'undefined') {
+                    output('weixinjsbridge not defined');
                     return false;
                 }
 
@@ -19,10 +25,13 @@
                     "link": "http://wjgx.net",
                     "desc": "share with friends",
                     "img_url": "http://wjgx.net/resources/shareicon.png"
+                }, function (e) {
+                    output(e.err_msg);
                 });
             }
             function sendToFriend() {
                 if (typeof WeixinJSBridge === 'undefined') {
+                    output('weixinjsbridge not defined');
                     return false;
                 }
 
@@ -31,16 +40,20 @@
                     "link": "http://wjgx.net",
                     "desc": "send to friend",
                     "img_url": "http://wjgx.net/resources/shareicon.png"
+                }, function (e) {
+                    output(e.err_msg);
                 });
             }
             function addContact() {
                 if (typeof WeixinJSBridge === 'undefined') {
+                    output('weixinjsbridge not defined');
                     return false;
                 }
                 WeixinJSBridge.invoke('addContact', {
                     webtype: '1',
                     username: 'gh_9b622d9e7726'
-                }, function (d) {
+                }, function (e) {
+                    output(e.err_msg);
                 });
             }
         </script>
