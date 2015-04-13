@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <button onclick="shareTimeline()">share to friend circle</button>
+        <button onclick="sendToFriend()">send to friend</button>
+        <button onclick="addContact()">add contact</button>
+        <script type="text/javascript">
+            function shareTimeline() {
+                if (typeof WeixinJSBridge === 'undefined') {
+                    return false;
+                }
+
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "title": "share with friends",
+                    "link": "http://wjgx.net",
+                    "desc": "share with friends",
+                    "img_url": "http://wjgx.net/resources/shareicon.png"
+                });
+            }
+            function sendToFriend() {
+                if (typeof WeixinJSBridge === 'undefined') {
+                    return false;
+                }
+
+                WeixinJSBridge.invoke('shareAppMessage', {
+                    "title": "send to friend",
+                    "link": "http://wjgx.net",
+                    "desc": "send to friend",
+                    "img_url": "http://wjgx.net/resources/shareicon.png"
+                });
+            }
+            function addContact() {
+                if (typeof WeixinJSBridge === 'undefined') {
+                    return false;
+                }
+                WeixinJSBridge.invoke('addContact', {
+                    webtype: '1',
+                    username: 'gh_9b622d9e7726'
+                }, function (d) {
+                });
+            }
+        </script>
+    </body>
+</html>
