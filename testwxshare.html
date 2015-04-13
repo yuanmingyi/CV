@@ -8,6 +8,9 @@
         <button onclick="shareTimeline()">share to friend circle</button>
         <button onclick="sendToFriend()">send to friend</button>
         <button onclick="addContact()">add contact</button>
+        <button onclick="showProfile()">show profile</button>
+        <button onclick="useExtBrowser()">use external browser</button>
+        <div><a href="weixin://profile/gh_9b622d9e7726">gongxiangzhushou</a></div>
         <div><span id="errMsg"></span></div>
         <script type="text/javascript">
             function output(msg) {
@@ -35,7 +38,7 @@
                     return false;
                 }
 
-                WeixinJSBridge.invoke('shareAppMessage', {
+                WeixinJSBridge.invoke('sendAppMessage', {
                     "title": "send to friend",
                     "link": "http://wjgx.net",
                     "desc": "send to friend",
@@ -49,9 +52,35 @@
                     output('weixinjsbridge not defined');
                     return false;
                 }
+
                 WeixinJSBridge.invoke('addContact', {
                     webtype: '1',
                     username: 'gh_9b622d9e7726'
+                }, function (e) {
+                    output(e.err_msg);
+                });
+            }
+            function showProfile() {
+                if (typeof WeixinJSBridge === 'undefined') {
+                    output('weixinjsbridge not defined');
+                    return false;
+                }
+
+                WeixinJSBridge.invoke("profile", {
+                    username: 'gh_9b622d9e7726',
+                    nickname: 'wjgxzs'
+                }, function (e) {
+                    output(e.err_msg);
+                });
+            }
+            function useExtBrowser() {
+                if (typeof WeixinJSBridge === 'undefined') {
+                    output('weixinjsbridge not defined');
+                    return false;
+                }
+
+                WeixinJSBridge.invoke("openUrlByExtBrowser", {
+                    url: window.location.href
                 }, function (e) {
                     output(e.err_msg);
                 });
